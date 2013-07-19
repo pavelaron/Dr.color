@@ -1,0 +1,13 @@
+{
+  "name": "Dr.Color",
+  "description": "Ishihara test application",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/images/icon-128.png"
+  },
+  "developer": {
+    "name": "Canecom Ltd.",
+    "url": "http://canecom.com"
+  },
+  "default_locale": "en"
+}

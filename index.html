@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dr.Color</title>      
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no' />
+    <link rel="stylesheet" type="text/css" href="style.css" />        
+	<script type="text/javascript" src="script.js"></script>
+</head>
+<body onload="init()">                  
+	<dd id="panel1">
+		<header class="pageHeader">
+			<span id="header_title">1st test</span>                  
+		</header>
+		<article class="content" id="landingPage"> 
+			<center>
+				<p>Enter the value as seen on image. Leave blank if you can't see anything...</p>
+			</center>
+		</article> 
+	</dd>
+	<br />
+	<center>
+		<table id="table_main" border="0">
+			<tbody>
+				<tr>
+					<td>
+						<input type="image" id="btn_back" src="images/btn_back.png" onClick="setPage(-1)" />
+					</td>
+					<td>
+						<center><img id="img_main" width="90%" /></center>
+					</td>
+					<td>
+						<input type="image" id="btn_next" src="images/btn_next.png" onClick="setPage(1)" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<article id="result">
+			<p>Probability of total color-blindness: <span id="pt"></span>/3</p>
+			<p>Probability of red-green-blindness: <span id="prg"></span>/3</p>
+			<br />
+			<p>Possibly red-blind: <span id="pr"></span></p>
+			<p>Possibly green-blind: <span id="pg"></span></p>
+			<br />
+			
+			<br />
+			<div><input type="button" value="Send results in mail" onClick="send()" /></div><br />
+			<div><input type="button" value="Reset" onClick="reset()" /></div>
+		</article>
+		
+		<input id="input" type="number" placeholder="Enter seen value..." />
+	</center>
+</body>
+</html>
