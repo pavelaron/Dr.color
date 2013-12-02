@@ -7,13 +7,34 @@ var pb = ["NO", "NO"];
 
 function init() {
 
-	selectImage(1, 5, 8);
+	selectImage(1, 5, 8, true);
 }
 
-function selectImage(page, value1, value2) {
+function selectImage(page, value1, value2, first) {
 
 	var imgId = (Math.random() > 0.5) ? value1 : value2;
-	byId("img_main").src = "images/" + page + imgId + ".jpg";
+	
+	if (first) {
+		byId("img_main").src = "images/" + page + imgId + ".jpg";
+	}
+	else {
+	
+		fade(byId("img_main"), false);
+		setTimeout(function() {	
+			
+			byId("img_main").src = "images/" + page + imgId + ".jpg";
+			setTimeout(function() {
+			
+				fade(byId("img_main"), true);
+				
+			}, 500);
+		}, 500);
+	}
+}
+
+function fade(btnElement, fadeIn) {
+
+	document.getElementById("img_main").className = fadeIn ? "fade-in" : "fade-out";
 }
 
 function setPage(inc) {
@@ -146,7 +167,17 @@ function setPage(inc) {
 	
 	var imgs = images[page];
 	if (page == 2) {
-		byId("img_main").src = (rgb[0] + rgb[1] > 0) ? "images/34.jpg" : "images/33.jpg";
+		
+		fade(byId("img_main"), false);
+		setTimeout(function() {	
+		
+			byId("img_main").src = (rgb[0] + rgb[1] > 0) ? "images/34.jpg" : "images/33.jpg";
+			setTimeout(function() {
+			
+				fade(byId("img_main"), true);
+			
+			}, 500);
+		}, 500);
 	}
 	else if (page == 4) {
 		
@@ -171,7 +202,7 @@ function setPage(inc) {
 		byId("pg").innerHTML = pb[1];
 	}
 	else {
-		selectImage(page + 1, imgs[0], imgs[1]);
+		selectImage(page + 1, imgs[0], imgs[1], false);
 	}
 	
 	byId("input").value = "";
@@ -194,5 +225,6 @@ function reset() {
 }
 
 function byId(id) {
+
 	return document.getElementById(id);
 }

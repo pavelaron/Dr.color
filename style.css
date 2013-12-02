@@ -113,6 +113,17 @@ input
 #img_main
 {
 	margin-bottom:10px;
+	-webkit-transition: opacity 0.5s ease-in;
+	-moz-transition: opacity 0.5s ease-in;
+	-o-transition: opacity 0.5s ease-in;
+}
+#img_main.fade-out
+{
+	opacity:0;            
+}
+#img_main.fade-in
+{
+	opacity:1;           
 }
 
  #panel1 nav dl dd:first-of-type
