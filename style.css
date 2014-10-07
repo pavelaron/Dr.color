@@ -57,8 +57,21 @@ input
 #btn_back { background-image: center center url(images/btn_back.png) no-repeat; } 
 #btn_back:active { background-image: center center url(images/btn_back_pressed.png) no-repeat; }
  
-#btn_next, #btn_back { width:33px; }
+#btn_next, #btn_back
+{ 
+	width:33px; 
+	padding-top:20px;
+	padding-bottom:20px;
+}
 #btn_back { visibility:hidden; }
+
+#input, .btn_result
+{
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+}
 
 #result
 {
