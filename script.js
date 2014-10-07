@@ -13,7 +13,7 @@ var pages = [
 	},
 	{
 		title: "Final test",
-		images: [16, 42]
+		images: [26, 42]
 	},
 	{
 		title: "Results"
@@ -25,22 +25,23 @@ var tb = [0, 0, 0, 0];
 var pb = ["NO", "NO"];
 
 function init() {
-	selectImage(1, pages[0].images, true);
+	selectImage(pages[0].images, true, -1);
 }
 
-function selectImage(page, images, first) {
+function selectImage(images, first, override) {
 
-	var imgId = images[Math.floor(Math.random() * images.length)];
+	var imgId = images[override == -1 
+	? Math.floor(Math.random() * images.length) : override];
 	
 	if (first) {
-		byId("img_main").src = "images/" + page + imgId + ".jpg";
+		byId("img_main").src = "images/" + imgId + ".jpg";
 	}
 	else {
 	
 		fade(byId("img_main"), false);
 		setTimeout(function() {	
 			
-			byId("img_main").src = "images/" + page + imgId + ".jpg";
+			byId("img_main").src = "images/" + imgId + ".jpg";
 			setTimeout(function() {
 			
 				fade(byId("img_main"), true);
@@ -77,7 +78,7 @@ function setPage(inc) {
 				rgb[0] = 0;
 				tb[0] = 0;
 				
-				if (byId("img_main").src.indexOf("15.jpg") != -1) {
+				if (byId("img_main").src.indexOf("5.jpg") != -1) {
 					
 					if (byId("input").value == "2") {
 						rgb[0] = 1;
@@ -105,7 +106,7 @@ function setPage(inc) {
 				rgb[1] = 0;
 				tb[1] = 0;
 				
-				if (byId("img_main").src.indexOf("216.jpg") != -1) {
+				if (byId("img_main").src.indexOf("16.jpg") != -1) {
 					
 					if (byId("input").value != "16") {
 						rgb[1] = 1;
@@ -133,7 +134,7 @@ function setPage(inc) {
 				rgb[2] = 0;
 				tb[2] = 0;
 				
-				if (byId("img_main").src.indexOf("33.jpg") != -1) {
+				if (byId("img_main").src.indexOf("3.jpg") != -1) {
 					
 					if (byId("input").value != "3") {
 						rgb[2] = 1;
@@ -153,7 +154,7 @@ function setPage(inc) {
 				rgb[3] = 0;
 				tb[3] = 0;
 				
-				if (byId("img_main").src.indexOf("426.jpg") != -1) {
+				if (byId("img_main").src.indexOf("26.jpg") != -1) {
 					
 					if (byId("input").value == "2") {
 						pb[1] = "YES";
@@ -188,17 +189,7 @@ function setPage(inc) {
 	
 	var imgs = pages[page].images;
 	if (page == 2) {
-		
-		fade(byId("img_main"), false);
-		setTimeout(function() {	
-		
-			byId("img_main").src = (rgb[0] + rgb[1] > 0) ? "images/34.jpg" : "images/33.jpg";
-			setTimeout(function() {
-			
-				fade(byId("img_main"), true);
-			
-			}, 500);
-		}, 500);
+		selectImage(imgs, false, (rgb[0] + rgb[1] > 0) ? 1 : 0);
 	}
 	else if (page == 4) {
 		
@@ -223,7 +214,7 @@ function setPage(inc) {
 		byId("pg").innerHTML = pb[1];
 	}
 	else {
-		selectImage(page + 1, imgs, false);
+		selectImage(imgs, false, -1);
 	}
 	
 	byId("input").value = "";
@@ -241,11 +232,9 @@ function send() {
 }
 
 function reset() {
-	
 	window.location.reload();
 }
 
 function byId(id) {
-
 	return document.getElementById(id);
 }
