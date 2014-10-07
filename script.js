@@ -1,18 +1,36 @@
-var pages = ["1st test", "2nd test", "3rd test", "Final test", "Results"];
-var images = [[5, 8], [16, 57], [3, 4], [26, 42]];
+var pages = [
+	{
+		title: "1st test",
+		images: [5, 8]
+	},
+	{
+		title: "2nd test",
+		images: [16, 57]
+	},
+	{
+		title: "3rd test",
+		images: [3, 4]
+	},
+	{
+		title: "Final test",
+		images: [16, 42]
+	},
+	{
+		title: "Results"
+	}
+];
 
 var rgb = [0, 0, 0, 0];
 var tb = [0, 0, 0, 0];
 var pb = ["NO", "NO"];
 
 function init() {
-
-	selectImage(1, 5, 8, true);
+	selectImage(1, pages[0].images, true);
 }
 
-function selectImage(page, value1, value2, first) {
+function selectImage(page, images, first) {
 
-	var imgId = (Math.random() > 0.5) ? value1 : value2;
+	var imgId = images[Math.floor(Math.random() * images.length)];
 	
 	if (first) {
 		byId("img_main").src = "images/" + page + imgId + ".jpg";
@@ -39,13 +57,16 @@ function fade(btnElement, fadeIn) {
 
 function setPage(inc) {
 	
-	var current = pages.indexOf(byId("header_title").innerHTML);
+	var current = pages.map(function(e) { 
+		return e.title; 
+	}).indexOf(byId("header_title").innerHTML);
+	
 	var page = current + inc;
 	
 	byId("btn_back").style.visibility = (page == 0) ? "hidden" : "visible";
 	byId("btn_next").style.visibility = (page == 4) ? "hidden" : "visible";
 	
-	byId("header_title").innerHTML = pages[page];
+	byId("header_title").innerHTML = pages[page].title;
 	
 	if (inc > 0) {
 		
@@ -165,7 +186,7 @@ function setPage(inc) {
 		}
 	}
 	
-	var imgs = images[page];
+	var imgs = pages[page].images;
 	if (page == 2) {
 		
 		fade(byId("img_main"), false);
@@ -202,7 +223,7 @@ function setPage(inc) {
 		byId("pg").innerHTML = pb[1];
 	}
 	else {
-		selectImage(page + 1, imgs[0], imgs[1], false);
+		selectImage(page + 1, imgs, false);
 	}
 	
 	byId("input").value = "";
