@@ -189,7 +189,7 @@ function setPage(inc) {
 	
 	var imgs = pages[page].images;
 	if (page == 2) {
-		selectImage(imgs, false, (rgb[0] + rgb[1] > 0) ? 1 : 0);
+		selectImage(imgs, false, 0 + (rgb[0] + rgb[1] > 0));
 	}
 	else if (page == 4) {
 		
