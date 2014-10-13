@@ -6,9 +6,10 @@ var pages = [
 	["Results"]
 ];
 
-var rgb = [0, 0, 0, 0];
-var tb = [0, 0, 0, 0];
 var pb = ["NO", "NO"];
+
+var rgb = 0;
+var tb = 0;
 
 function init() {
 	selectImage(pages[0], true, -1);
@@ -59,27 +60,24 @@ function setPage(inc) {
 			
 			case 0:
 				
-				rgb[0] = 0;
-				tb[0] = 0;
-				
 				if (byId("img_main").src.indexOf("5.jpg") != -1) {
 					
 					if (byId("input").value == "2") {
-						rgb[0] = 1;
+						rgb++;
 					}
 					else if (byId("input").value != "5") {
-						rgb[0] = 1;
-						tb[0] = 1;
+						rgb++;
+						tb++;
 					}
 				}
 				else {
 					
 					if (byId("input").value == "3") {
-						rgb[0] = 1;
+						rgb++;
 					}
 					else if (byId("input").value != "8") {
-						rgb[0] = 1;
-						tb[0] = 1;
+						rgb++;
+						tb++;
 					}
 				}
 				
@@ -87,27 +85,23 @@ function setPage(inc) {
 				
 			case 1:
 				
-				rgb[1] = 0;
-				tb[1] = 0;
-				
 				if (byId("img_main").src.indexOf("16.jpg") != -1) {
 					
 					if (byId("input").value != "16") {
-						rgb[1] = 1;
-						tb[1] = 1;
+						rgb++;
+						tb++;
 					}
 				}
 				else {
 					
 					if (byId("input").value == "35") {
 						
-						rgb[1] = 1;
-						tb[1] = 0;
+						rgb++;
 					}
 					else if (byId("input").value != "57") {
 						
-						rgb[1] = 1;
-						tb[1] = 1;
+						rgb++;
+						tb++;
 					}
 				}
 				
@@ -115,28 +109,21 @@ function setPage(inc) {
 				
 			case 2:
 			
-				rgb[2] = 0;
-				tb[2] = 0;
-				
 				if (byId("img_main").src.indexOf("3.jpg") != -1) {
 					
 					if (byId("input").value != "3") {
-						rgb[2] = 1;
-						tb[2] = 1;
+						rgb++;
+						tb++;
 					}
 				}
 				else if ((byId("input").value == "4") || (byId("input").value == "5")) {
 					
-					rgb[2] = 1;
-					tb[2] = 0;
+					rgb++;
 				}
 			
 				break;
 				
 			case 3:
-				
-				rgb[3] = 0;
-				tb[3] = 0;
 				
 				if (byId("img_main").src.indexOf("26.jpg") != -1) {
 					
@@ -149,7 +136,7 @@ function setPage(inc) {
 					else if (byId("input").value != "26") {
 					
 						pb = ["YES", "YES"];
-						tb[3] = 1;
+						tb++;
 					}
 				}
 				else {
@@ -163,7 +150,7 @@ function setPage(inc) {
 					else if (byId("input").value != "42") {
 					
 						pb = ["YES", "YES"];
-						tb[3] = 1;
+						tb++;
 					}
 				}
 				
@@ -173,7 +160,7 @@ function setPage(inc) {
 	
 	var imgs = pages[page];
 	if (page == 2) {
-		selectImage(imgs, false, 0 + (rgb[0] + rgb[1] > 0));
+		selectImage(imgs, false, 0 + (rgb > 0));
 	}
 	else if (page == 4) {
 		
@@ -183,17 +170,8 @@ function setPage(inc) {
 		byId("table_main").style.display = "none";
 		byId("result").style.display = "inline";
 		
-		var irgb = 0;
-		var itb = 0;
-		
-		for (var i = 0; i < rgb.length; i++) {
-			
-			irgb += rgb[i];
-			itb += tb[i];
-		}
-		
-		byId("pt").innerHTML = itb.toString();
-		byId("prg").innerHTML = irgb.toString();
+		byId("pt").innerHTML = tb.toString();
+		byId("prg").innerHTML = rgb.toString();
 		byId("pr").innerHTML = pb[0];
 		byId("pg").innerHTML = pb[1];
 	}
