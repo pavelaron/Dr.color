@@ -24,21 +24,21 @@ function selectImage(page, first, override) {
 	}
 	else {
 	
-		fade(byId("img_main"), false);
+		fade(byId("img_main"), "out");
 		setTimeout(function() {	
 			
 			byId("img_main").src = "images/" + imgId + ".jpg";
 			setTimeout(function() {
 			
-				fade(byId("img_main"), true);
+				fade(byId("img_main"), "in");
 				
 			}, 500);
 		}, 500);
 	}
 }
 
-function fade(btnElement, fadeIn) {
-	document.getElementById("img_main").className = fadeIn ? "fade-in" : "fade-out";
+function fade(btnElement, fading) {
+	byId("img_main").className = "fade-" + fading;
 }
 
 function setPage(inc) {
