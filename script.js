@@ -1,23 +1,9 @@
 var pages = [
-	{
-		title: "1st test",
-		images: [5, 8]
-	},
-	{
-		title: "2nd test",
-		images: [16, 57]
-	},
-	{
-		title: "3rd test",
-		images: [3, 4]
-	},
-	{
-		title: "Final test",
-		images: [26, 42]
-	},
-	{
-		title: "Results"
-	}
+	["1st test", 5, 8],
+	["2nd test", 16, 57],
+	["3rd test", 3, 4],
+	["Final test", 26, 42],
+	["Results"]
 ];
 
 var rgb = [0, 0, 0, 0];
@@ -25,13 +11,13 @@ var tb = [0, 0, 0, 0];
 var pb = ["NO", "NO"];
 
 function init() {
-	selectImage(pages[0].images, true, -1);
+	selectImage(pages[0], true, -1);
 }
 
-function selectImage(images, first, override) {
+function selectImage(page, first, override) {
 
-	var imgId = images[override == -1 
-	? Math.floor(Math.random() * images.length) : override];
+	var imgId = page[1 + (override == -1 
+	? Math.floor(Math.random() * (page.length - 1)) : override)];
 	
 	if (first) {
 		byId("img_main").src = "images/" + imgId + ".jpg";
@@ -52,22 +38,20 @@ function selectImage(images, first, override) {
 }
 
 function fade(btnElement, fadeIn) {
-
 	document.getElementById("img_main").className = fadeIn ? "fade-in" : "fade-out";
 }
 
 function setPage(inc) {
 	
-	var current = pages.map(function(e) { 
-		return e.title; 
-	}).indexOf(byId("header_title").innerHTML);
+	var current = pages.map(function(element) { return element[0]; })
+	.indexOf(byId("header_title").innerHTML);
 	
 	var page = current + inc;
 	
 	byId("btn_back").style.visibility = (page == 0) ? "hidden" : "visible";
 	byId("btn_next").style.visibility = (page == 4) ? "hidden" : "visible";
 	
-	byId("header_title").innerHTML = pages[page].title;
+	byId("header_title").innerHTML = pages[page][0];
 	
 	if (inc > 0) {
 		
@@ -187,7 +171,7 @@ function setPage(inc) {
 		}
 	}
 	
-	var imgs = pages[page].images;
+	var imgs = pages[page];
 	if (page == 2) {
 		selectImage(imgs, false, 0 + (rgb[0] + rgb[1] > 0));
 	}
