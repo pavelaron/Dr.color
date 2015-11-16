@@ -49,8 +49,8 @@ function setPage(inc) {
 	
 	var page = current + inc;
 	
-	byId("btn_back").style.visibility = (page == 0) ? "hidden" : "visible";
-	byId("btn_next").style.visibility = (page == 4) ? "hidden" : "visible";
+	byId("btn_back").style.visibility = (page === 0) ? "hidden" : "visible";
+	byId("btn_next").style.visibility = (page === 4) ? "hidden" : "visible";
 	
 	byId("header_title").innerHTML = pages[page][0];
 	
