@@ -21,17 +21,17 @@ function selectImage(page, first, override) {
 	? Math.floor(Math.random() * (page.length - 1)) : override)];
 	
 	if (first) {
-		byId("img_main").src = "images/" + imgId + ".jpg";
+		_id("img_main").src = "images/" + imgId + ".jpg";
 	}
 	else {
 	
-		fade(byId("img_main"), "out");
+		fade(_id("img_main"), "out");
 		setTimeout(function() {	
 			
-			byId("img_main").src = "images/" + imgId + ".jpg";
+			_id("img_main").src = "images/" + imgId + ".jpg";
 			setTimeout(function() {
 			
-				fade(byId("img_main"), "in");
+				fade(_id("img_main"), "in");
 				
 			}, 500);
 		}, 500);
@@ -39,20 +39,20 @@ function selectImage(page, first, override) {
 }
 
 function fade(btnElement, fading) {
-	byId("img_main").className = "fade-" + fading;
+	_id("img_main").className = "fade-" + fading;
 }
 
 function setPage(inc) {
 	
 	var current = pages.map(function(element) { return element[0]; })
-	.indexOf(byId("header_title").innerHTML);
+	.indexOf(_id("header_title").innerHTML);
 	
 	var page = current + inc;
 	
-	byId("btn_back").style.visibility = (page === 0) ? "hidden" : "visible";
-	byId("btn_next").style.visibility = (page === 4) ? "hidden" : "visible";
+	_id("btn_back").style.visibility = (page === 0) ? "hidden" : "visible";
+	_id("btn_next").style.visibility = (page === 4) ? "hidden" : "visible";
 	
-	byId("header_title").innerHTML = pages[page][0];
+	_id("header_title").innerHTML = pages[page][0];
 	
 	if (inc > 0) {
 		
@@ -60,22 +60,22 @@ function setPage(inc) {
 			
 			case 0:
 				
-				if (byId("img_main").src.indexOf("5.jpg") != -1) {
+				if (_id("img_main").src.indexOf("5.jpg") != -1) {
 					
-					if (byId("input").value == "2") {
+					if (_id("input").value == "2") {
 						rgb++;
 					}
-					else if (byId("input").value != "5") {
+					else if (_id("input").value != "5") {
 						rgb++;
 						tb++;
 					}
 				}
 				else {
 					
-					if (byId("input").value == "3") {
+					if (_id("input").value == "3") {
 						rgb++;
 					}
-					else if (byId("input").value != "8") {
+					else if (_id("input").value != "8") {
 						rgb++;
 						tb++;
 					}
@@ -85,20 +85,20 @@ function setPage(inc) {
 				
 			case 1:
 				
-				if (byId("img_main").src.indexOf("16.jpg") != -1) {
+				if (_id("img_main").src.indexOf("16.jpg") != -1) {
 					
-					if (byId("input").value != "16") {
+					if (_id("input").value != "16") {
 						rgb++;
 						tb++;
 					}
 				}
 				else {
 					
-					if (byId("input").value == "35") {
+					if (_id("input").value == "35") {
 						
 						rgb++;
 					}
-					else if (byId("input").value != "57") {
+					else if (_id("input").value != "57") {
 						
 						rgb++;
 						tb++;
@@ -109,14 +109,14 @@ function setPage(inc) {
 				
 			case 2:
 			
-				if (byId("img_main").src.indexOf("3.jpg") != -1) {
+				if (_id("img_main").src.indexOf("3.jpg") != -1) {
 					
-					if (byId("input").value != "3") {
+					if (_id("input").value != "3") {
 						rgb++;
 						tb++;
 					}
 				}
-				else if ((byId("input").value == "4") || (byId("input").value == "5")) {
+				else if ((_id("input").value == "4") || (_id("input").value == "5")) {
 					
 					rgb++;
 				}
@@ -125,15 +125,15 @@ function setPage(inc) {
 				
 			case 3:
 				
-				if (byId("img_main").src.indexOf("26.jpg") != -1) {
+				if (_id("img_main").src.indexOf("26.jpg") != -1) {
 					
-					if (byId("input").value == "2") {
+					if (_id("input").value == "2") {
 						pb[1] = "YES";
 					}
-					else if (byId("input").value == "6") {
+					else if (_id("input").value == "6") {
 						pb[0] = "YES";
 					}
-					else if (byId("input").value != "26") {
+					else if (_id("input").value != "26") {
 					
 						pb = ["YES", "YES"];
 						tb++;
@@ -141,13 +141,13 @@ function setPage(inc) {
 				}
 				else {
 					
-					if (byId("input").value == "4") {
+					if (_id("input").value == "4") {
 						pb[1] = "YES";
 					}
-					else if (byId("input").value == "2") {
+					else if (_id("input").value == "2") {
 						pb[0] = "YES";
 					}
-					else if (byId("input").value != "42") {
+					else if (_id("input").value != "42") {
 					
 						pb = ["YES", "YES"];
 						tb++;
@@ -164,31 +164,31 @@ function setPage(inc) {
 	}
 	else if (page == 4) {
 		
-		byId("landingPage").style.visibility = "hidden";
-		byId("input").style.display = "none";
+		_id("landingPage").style.visibility = "hidden";
+		_id("input").style.display = "none";
 		
-		byId("table_main").style.display = "none";
-		byId("result").style.display = "inline";
+		_id("table_main").style.display = "none";
+		_id("result").style.display = "inline";
 		
-		byId("pt").innerHTML = tb.toString();
-		byId("prg").innerHTML = rgb.toString();
-		byId("pr").innerHTML = pb[0];
-		byId("pg").innerHTML = pb[1];
+		_id("pt").innerHTML = tb.toString();
+		_id("prg").innerHTML = rgb.toString();
+		_id("pr").innerHTML = pb[0];
+		_id("pg").innerHTML = pb[1];
 	}
 	else {
 		selectImage(imgs, false, -1);
 	}
 	
-	byId("input").value = "";
+	_id("input").value = "";
 }
 
 function send() {
 
 	var url = "mailto:?subject=Dr.Color%20test%20results&body=" 
-	+ "Probability%20of%20total%20color-blindness%3a%20" + byId("pt").innerHTML + "%2f3%0d%0a"
-	+ "Probability%20of%20red-green-blindness%3a%20" + byId("prg").innerHTML + "%2f3%0d%0a%0d%0a"
-	+ "Possibly%20red-blind%3a%20" + byId("pr").innerHTML + "%0d%0a"
-	+ "Possibly%20green-blind%3a%20" + byId("pg").innerHTML + "%0d%0a";
+	+ "Probability%20of%20total%20color-blindness%3a%20" + _id("pt").innerHTML + "%2f3%0d%0a"
+	+ "Probability%20of%20red-green-blindness%3a%20" + _id("prg").innerHTML + "%2f3%0d%0a%0d%0a"
+	+ "Possibly%20red-blind%3a%20" + _id("pr").innerHTML + "%0d%0a"
+	+ "Possibly%20green-blind%3a%20" + _id("pg").innerHTML + "%0d%0a";
 	
 	window.location.href = url;
 }
@@ -197,6 +197,6 @@ function reset() {
 	window.location.reload();
 }
 
-function byId(id) {
+function _id(id) {
 	return document.getElementById(id);
 }

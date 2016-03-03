@@ -22,22 +22,11 @@
 		</article> 
 	</dd>
 	<br />
-	<center>
-		<table id="table_main" border="0">
-			<tbody>
-				<tr>
-					<td>
-						<input type="image" id="btn_back" src="images/btn_back.png" onClick="setPage(-1)" />
-					</td>
-					<td>
-						<center><img id="img_main" width="90%" /></center>
-					</td>
-					<td>
-						<input type="image" id="btn_next" src="images/btn_next.png" onClick="setPage(1)" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<div id="table_main">
+			<input type="image" id="btn_back" src="images/btn_back.png" onClick="setPage(-1)" />
+			<img id="img_main" />
+			<input type="image" id="btn_next" src="images/btn_next.png" onClick="setPage(1)" />
+		</div>
 		<article id="result">
 			<p>Probability of total color-blindness: <span id="pt"></span>/3</p>
 			<p>Probability of red-green-blindness: <span id="prg"></span>/3</p>
@@ -51,7 +40,7 @@
 			<div><input class="btn_result" type="button" value="Reset" onClick="reset()" /></div>
 		</article>
 		
-		<input id="input" type="number" placeholder="Enter seen value..." />
-	</center>
+		<div id="input"><input type="number" placeholder="Enter seen value..." /></div>
+
 </body>
 </html>

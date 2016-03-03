@@ -50,7 +50,28 @@ input
 	float:left;
 	margin-left:10px;
 }
- 
+
+#table_main
+{
+	width: 100%;
+	display: block;
+}
+
+#table_main img
+{
+	float: left;
+	display: inline;
+	width: 80%;
+}
+
+#table_main input
+{
+	float: left;
+	display: inline;
+	width: 10%;
+	margin-top: 30%;
+}
+
 #btn_next { background-image: center center url(images/btn_next.png) no-repeat; } 
 #btn_next:active { background-image: center center url(images/btn_next_pressed.png) no-repeat; } 
  
@@ -65,17 +86,21 @@ input
 }
 #btn_back { visibility:hidden; }
 
-#input, .btn_result
+#input, #input input, .btn_result
 {
-	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:10px;
-	padding-right:10px;
+	padding: 10px;
+}
+
+#input
+{
+	display: block;
+	text-align: center;
 }
 
 #result
 {
-	display:none;
+	display: none;
+	text-align: center;
 }
 
 #backBtn
