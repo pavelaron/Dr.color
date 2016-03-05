@@ -1,13 +1,16 @@
-html,body
-{
+*
+{ 
 	margin:0;
 	padding:0;
+}
+
+html,body
+{
 	font-family:Helvetica;
 	font-size:14px;
 	background-color:#fff;
 	color:#222;
 }
-h1, h2, h3, h4, h5, h6, p, div, br, hr, input, form, label, ul, ol, dl, li, select, option, frameset, iframe, frame, dd, dt, textarea, tr, td, tbody, table, pre, img, small, strong, sub, sup, marquee, nobr, dir, font, embed, noembed, blockquote{ margin:0; padding:0;}
 
 input
 {
@@ -180,4 +183,5 @@ article.content
 {
 	width:95%;
 	margin:10px 10px auto 10px;
+	text-align:center;
 }       
